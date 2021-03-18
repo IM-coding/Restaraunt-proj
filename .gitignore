@@ -1,0 +1,4 @@
+tables/settings.ini
+**/__pycache__
+**/migrations/**
+!**/migrations/__init__.py
