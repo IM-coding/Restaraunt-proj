@@ -17,11 +17,9 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.spl
 
 
 # Application definition
-
 LOCAL_APPS = [
-    'apps.core.app.TablesConfig',
+    'core.apps.CoreConfig',
 ]
-
 
 INSTALLED_APPS = [
     'jet.dashboard',
@@ -34,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ] + LOCAL_APPS
 
+# Middleware include
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -44,8 +43,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Root urls path
 ROOT_URLCONF = 'tables.urls'
 
+# Path to templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -62,10 +63,11 @@ TEMPLATES = [
     },
 ]
 
+# WSGI App 
 WSGI_APPLICATION = 'tables.wsgi.application'
 
 
-# Database
+# Database - Postgresql 
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
@@ -129,8 +131,7 @@ LANGUAGES = (
     ('us', 'English'),
 )
 
-# Jet ADMIN
-
+# Jet ADMIN - premade admin panel with settings
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # theme list: 'default', 'green', 'light-violet', 'light-green', 'light-blue', 'light-gray'

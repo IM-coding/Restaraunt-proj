@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
-from tables.core.models import (
+from .models import (
     Hall, Table, Reservation,
 )
 
@@ -33,11 +33,17 @@ class ReservationAdmin(admin.ModelAdmin):
 
     list_display = (
         'table', 'client_name', 'email', 'phone', 'comment',
-        'reservation_date', 'table'
+        'reservation_date', 'get_table'
     )
-    inlines = (TableInline,)
+
+    def get_table(self, obj):
+        return obj.table
+    get_table.short_description = 'Table'
+    get_table.admin_order_field = 'reservation__table'
 
     """ 
-    TODO: for custom template with front-end features uncomment this line
+    TODO:
+    1. Fill template 
+    2. Uncomment line below
     """
     #change_list_template = 'reservation.html'

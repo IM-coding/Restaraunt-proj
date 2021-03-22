@@ -1,7 +1,6 @@
 from django.db import models
-from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
-from tables.core.choices import SHAPE_CHOICE
+from .choices import SHAPE_CHOICE
 
 
 """ Hall base model - input data from admin panel """
@@ -25,7 +24,7 @@ class Hall(models.Model):
     )
 
     def __str__(self):
-        return f'{self.name}: width: {self.width}, length {self.length}'
+        return f'{self.name}: width {self.width}, length {self.length}'
 
 """ 
     Table base model related to Hall width and leangth stored in float number 
@@ -73,11 +72,11 @@ class Table(models.Model):
     )
 
     def __str__(self):
-        return f'{self.number}: placements: {self.placements}, length {self.length}'
+        return f'{self.number}: placements {self.placements}, shape {self.shape}'
 
     def save(self, **kwargs):
-        self.width = round(self.width / self.hall.width, 2)
-        self.length = round(self.length / self.hall.length, 2)
+        self.width = round((self.width / self.hall.width)*100, 2)
+        self.length = round((self.length / self.hall.length)*100, 2)
         return super().save(**kwargs)
 
 
@@ -119,4 +118,4 @@ class Reservation(models.Model):
         unique_together = ('table', 'reservation_date',)
     
     def __str__(self):
-        return f'{self.table}: client: {self.client_name}, date {self.reservation_date}'
+        return f'{self.table}: client {self.client_name}, date {self.reservation_date}'
