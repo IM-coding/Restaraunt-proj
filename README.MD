@@ -15,10 +15,14 @@ Usage:
 
 4). python -m pip install -r requirements.txt
 
-5). in /tables/settings.ini change:  
+5). in /tables/settings.ini change:
+  
     a) SECRET_KEY=  *Your generated key*
+    
     b) DB_NAME= *Your database name*
+    
     c) DB_USER= *Your database user name*
+    
     d) DB_PASSWORD= *If your db user has pass, put it here*
 
 6). python manage.py makemigrations
