@@ -146,3 +146,9 @@ JET_SIDE_MENU_ITEMS = [
         {'name': 'core.reservation'},
     ]},
 ]
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', cast=str)
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', cast=str)
+EMAIL_USE_SSL = True

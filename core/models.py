@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from .choices import SHAPE_CHOICE
+from django.core.mail import send_mail
+from tables.settings import EMAIL_HOST_USER
 
 
 """ Hall base model - input data from admin panel """
@@ -117,5 +119,15 @@ class Reservation(models.Model):
     class Meta:
         unique_together = ('table', 'reservation_date',)
     
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        send_mail(
+            'Subject here',
+            'Here is the message.',
+            EMAIL_HOST_USER,
+            [self.email,],
+            fail_silently=False,
+        )
+
     def __str__(self):
         return f'{self.table}: client {self.client_name}, date {self.reservation_date}'

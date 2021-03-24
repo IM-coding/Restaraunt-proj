@@ -1,6 +1,7 @@
 # Django Tables Test proj:
 
-Example Django proj for tables reservation with tests
+Example Django proj for tables reservation with tests and email sending
+upon making reservation
 
 Usage writen for Linux/Ubuntu and assumes you have
 installed postgres database (https://www.postgresql.org/)
@@ -16,10 +17,12 @@ Usage:
 4). python -m pip install -r requirements.txt
 
 5). in /tables/settings.ini change:  
-    a) SECRET_KEY=<Your generated key>
-    b) DB_NAME=<Your database name>
-    c) DB_USER=<Your database user name>
-    d) DB_PASSWORD=<If your db user has pass, put it here>
+    a) SECRET_KEY= *Your generated key*
+    b) DB_NAME= *Your database name*
+    c) DB_USER= *Your database user name*
+    d) DB_PASSWORD= *If your db user has pass, put it here*
+    e) EMAIL_HOST_USER= *Your_email*
+    f) EMAIL_HOST_PASSWORD= *Your_email_password*
 
 6). python manage.py makemigrations
 
