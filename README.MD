@@ -11,17 +11,25 @@ Usage:
 
 2). source env/bin/activate
 
-3). python -m pip install -r requirements.txt
+3). cd Restaraunt-proj
 
-4). python manage.py makemigrations
+4). python -m pip install -r requirements.txt
 
-5). python manage.py migrate
+5). in /tables/settings.ini change:  
+    a) SECRET_KEY=<Your generated key>
+    b) DB_NAME=<Your database name>
+    c) DB_USER=<Your database user name>
+    d) DB_PASSWORD=<If your db user has pass, put it here>
 
-6). python manage.py createsuperuser
+6). python manage.py makemigrations
 
-7). python manage.py test
+7). python manage.py migrate
 
-8). python manage.py runserver
+8). python manage.py createsuperuser
 
-8). in browser http://127.0.0.1:8000/admin (login and password of superuser from 6)
+9). python manage.py test
+
+10). python manage.py runserver
+
+11). in browser http://127.0.0.1:8000/admin (login and password of superuser from 8)
 
